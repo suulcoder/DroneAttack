@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class start : MonoBehaviour {
 
+    public AudioSource audio;
     public bool instructionsState = false;
 
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    void Start () {
+        audio.GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame
@@ -21,6 +22,7 @@ public class start : MonoBehaviour {
 
     public void CambiarEscena(string _newScene)
     {
+        audio.Play(0);
         //Change scene
         transform.Find("ShowText").GetComponent<UnityEngine.UI.Text>().text = "Loading...";
         SceneManager.LoadScene(_newScene);
@@ -28,6 +30,7 @@ public class start : MonoBehaviour {
 
     public void showInstructions()
     {
+        audio.Play(0);
         if (instructionsState)
         {
             instructionsState = false;

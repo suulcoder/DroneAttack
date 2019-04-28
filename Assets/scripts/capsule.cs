@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class capsule : MonoBehaviour {
 
-    
+    public AudioSource audioCapsule;
+
     // Use this for initialization
     void Start() {
-
+        audioCapsule.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class capsule : MonoBehaviour {
         
         if (Physics.Raycast(myRay, out hitInfo))
         {
+            audioCapsule.Play();
             hitInfo.transform.gameObject.GetComponent<Rigidbody>().AddForce((hitInfo.collider.gameObject.transform.position - hitInfo.point).normalized * 50, ForceMode.VelocityChange);
         }
     }
